@@ -1,0 +1,38 @@
+service: serverless-nodejs-app
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  stage: dev
+  region: ap-south-1
+  
+functions:
+  create:
+    handler: app.create
+    events:
+      - http:
+          path: /create
+          method: post
+
+  read:
+    handler: app.read
+    events:
+      - http:
+          path: /read
+          method: get
+  
+  update:
+    handler: app.update
+    events:
+      - http:
+          path: /update
+          method: put
+
+  delete:
+    handler: app.delete/{id}
+    events:
+      - http:
+          path: /delete
+          method: delete
+
+  
